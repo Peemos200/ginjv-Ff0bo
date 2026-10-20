@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 📌 SEO Meta Tags สำหรับ Google Search (จัดเต็ม) -->
+    <title>DojinWorld - อ่านโดจินแปลไทย อ่านการ์ตูนออนไลน์ฟรี คมชัด HD</title>
+    <meta name="description" content="DojinWorld เว็บรวมโดจินแปลไทย อ่านการ์ตูนออนไลน์ฟรี คมชัด HD อัปเดตใหม่ทุกวัน รวมทุกหมวดหมู่ อนิเมะ แฟนตาซี นักเรียน คุณครู ภาพสี อ่านง่ายบนมือถือ">
+    <meta name="keywords" content="dojinworld, dojinworld.com, โดจิน, โดจินไทย, โดจินแปลไทย, อ่านโดจิน, อ่านการ์ตูน, การ์ตูนแปลไทย, โดจินอนิเมะ, โดจินภาพสี, โดจินหมวดหมู่, โดจินใหม่, โดจิน PDF, doujin, doujinshi, doujin th, doujin thai, read doujin">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="DojinWorld">
+
+    <!-- 📌 Open Graph Meta Tags (สำหรับเวลาแชร์ลิงก์ลง Facebook, Twitter, LINE แล้วขึ้นรูป/ข้อความสวยๆ) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dojinworld.com/">
+    <meta property="og:title" content="DojinWorld - อ่านโดจินแปลไทย อ่านการ์ตูนออนไลน์ฟรี">
+    <meta property="og:description" content="เว็บรวมโดจินแปลไทย คมชัด อ่านฟรี อัปเดตใหม่ทุกวัน ครบทุกหมวดหมู่">
+    <meta property="og:site_name" content="DojinWorld">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #121212; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        header { 
+            padding: 15px 30px; 
+            background: #1a1a1a; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 2px solid #2a2a2a; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo { 
+            font-size: 24px; 
+            font-weight: 900; 
+            color: #ff4757; 
+            letter-spacing: 1px; 
+            cursor: pointer; 
+            text-decoration: none;
+        }
+        .nav-contact {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-contact:hover {
+            color: #ff4757;
+        }
+        .logo span { color: #fff; }
+
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1450px;
+            margin: 80px auto 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ป้ายโฆษณายาวซ้าย-ขวา (Sticky - ปิดไม่ได้) */
+        .side-sticky-ad {
+            width: 180px;
+            flex-shrink: 0;
+            padding: 20px 0;
+            position: sticky;
+            top: 90px;
+            overflow-y: auto;
+        }
+        .long-banner {
+            width: 100%;
+            height: 500px;
+            background: #1e1e1e;
+            border: 2px dashed #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            padding: 10px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            max-width: 950px;
+            margin: 0 20px;
+            padding: 20px 0;
+        }
+
+        /* โฆษณาตารางบน 6 ช่อง */
+        .top-ad-grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+            background: #181818;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #2a2a2a;
+        }
+        .top-ad-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .top-ad-box {
+            height: 90px;
+            background: #222;
+            border: 1px dashed #444;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 12px;
+        }
+
+        /* 🔍 ช่องค้นหาและปุ่มหมวดหมู่ */
+        .search-bar-container {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 16px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-input:focus {
+            border-color: #ff4757;
+        }
+
+        .category-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .cat-btn {
+            background: #1a1a1a;
+            color: #aaa;
+            border: 1px solid #333;
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .cat-btn:hover { background: #333; color: #fff; }
+        .cat-btn.active {
+            background: #ff4757;
+            color: #fff;
+            border-color: #ff4757;
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff4757;
+            padding-left: 10px;
+            color: #fff;
+        }
+        .doujin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .doujin-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .doujin-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff4757;
+        }
+        .doujin-thumb {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #222;
+        }
+        .doujin-info {
+            padding: 10px;
+        }
+        .doujin-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .doujin-chapters {
+            font-size: 12px;
+            color: #888;
+        }
+        .doujin-tags-container {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .doujin-tag {
+            background: #2a2a2a;
+            color: #ff4757;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .page-btn {
+            background: #1a1a1a;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .page-btn:hover { background: #333; }
+        .page-btn.active {
+            background: #ff4757;
+            border-color: #ff4757;
+            font-weight: bold;
+        }
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        #readerView { display: none; }
+        .reader-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .back-btn { background: #ff4757; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .reader-pages { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .reader-pages img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+
+        footer {
+            background: #181818;
+            border-top: 1px solid #2a2a2a;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .contact-box { max-width: 600px; margin: 0 auto; }
+        .contact-box h3 { color: #fff; margin-bottom: 10px; font-size: 18px; }
+        .contact-box p { color: #aaa; font-size: 14px; line-height: 1.6; white-space: pre-line; }
+
+        /* โฆษณาซ้าย-ขวาแบบป็อปอัป (ปิดได้ 5 วิ) */
+        .ad-banner {
+            position: fixed;
+            top: 100px;
+            width: 160px;
+            height: 500px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .ad-left { left: 15px; }
+        .ad-right { right: 15px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ad-close-btn {
+            width: 100%;
+            padding: 6px;
+            background-color: #333;
+            color: #888;
+            border: none;
+            cursor: not-allowed;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .ad-close-btn.active {
+            background-color: #ff4757;
+            color: white;
+            cursor: pointer;
+        }
+        .ad-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* 📱 จัดการการแสดงผลบนจอคอมขนาดเล็กและมือถือ */
+        @media (max-width: 1400px) { 
+            .side-sticky-ad { display: none; } 
+        }
+
+        @media (max-width: 768px) {
+            .ad-banner {
+                top: auto;
+                bottom: 15px;
+                width: 140px;
+                height: 220px;
+            }
+            .ad-left { left: 10px; }
+            .ad-right { right: 10px; }
+
+            .top-ad-grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- แถบโฆษณาเด้งฝั่งซ้าย (ปิดได้ 5 วิ) -->
+    <div id="ad-left" class="ad-banner ad-left">
+        <button class="ad-close-btn" onclick="closeAd('ad-left')" disabled>ปิดได้ใน (5s)</button>
+        <div class="ad-content">
+            <p>พื้นที่โฆษณาซ้าย</p>
+        </div>
+    </div>
+
+    <!-- แถบโฆษณาเด้งฝั่งขวา (ปิดได้ 5 วิ) -->
+    <div id="ad-right" class="ad-banner ad-right">
+        <button class="ad-close-btn" onclick="closeAd('ad-right')" disabled>ปิดได้ใน (5s)</button>
+        <div class="ad-content">
+            <p>พื้นที่โฆษณาขวา</p>
+        </div>
+    </div>
+
+    <header>
+        <a class="logo" onclick="goHome()">Dojin<span>World</span></a>
+        <a href="mailto:support@dojinworld.com" class="nav-contact">
+            ✉️ ติดต่อเรา: support@dojinworld.com
+        </a>
+    </header>
+
+    <div class="wrapper">
+        <!-- โฆษณายาวซ้าย (ปิดไม่ได้ - ซ่อนบนมือถือ) -->
+        <aside class="side-sticky-ad">
+            <div class="long-banner">โฆษณายาวซ้าย<br>(Sticky Banner)</div>
+        </aside>
+
+        <main class="main-content">
+            <!-- โฆษณาตารางบน 6 ช่อง -->
+            <div class="top-ad-grid-container">
+                <div class="top-ad-column">
+                    <div class="top-ad-box">พื้นที่โฆษณาบน 1 (ซ้าย)</div>
+                    <div class="top-ad-box">พื้นที่โฆษณาบน 2 (ซ้าย)</div>
+                    <div class="top-ad-box">พื้นที่โฆษณาบน 3 (ซ้าย)</div>
+                </div>
+                <div class="top-ad-column">
+                    <div class="top-ad-box">พื้นที่โฆษณาบน 4 (ขวา)</div>
+                    <div class="top-ad-box">พื้นที่โฆษณาบน 5 (ขวา)</div>
+                    <div class="top-ad-box">พื้นที่โฆษณาบน 6 (ขวา)</div>
+                </div>
+            </div>
+
+            <!-- หน้าแรก -->
+            <div id="homeView">
+                <!-- 🔍 ช่องค้นหา -->
+                <div class="search-bar-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="🔍 พิมพ์ค้นหาชื่อเรื่อง..." oninput="handleSearch()">
+                </div>
+
+                <div class="category-bar" id="categoryBar"></div>
+                <h2 class="section-title" id="sectionTitle">รายการโดจินทั้งหมด</h2>
+                <div class="doujin-grid" id="doujinGrid"></div>
+                <div class="pagination-container" id="pagination"></div>
+            </div>
+
+            <!-- หน้าอ่านการ์ตูน -->
+            <div id="readerView">
+                <div class="reader-header">
+                    <button class="back-btn" onclick="goHome()">← กลับหน้าแรก</button>
+                    <h2 id="readingTitle" style="color:#fff; font-size:18px;"></h2>
+                    <div></div>
+                </div>
+                <div class="reader-pages" id="readerPagesContainer"></div>
+            </div>
+        </main>
+
+        <!-- โฆษณายาวขวา (ปิดไม่ได้ - ซ่อนบนมือถือ) -->
+        <aside class="side-sticky-ad">
+            <div class="long-banner">โฆษณายาวขวา<br>(Sticky Banner)</div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="contact-box">
+            <h3>ติดต่อเรา / ลงโฆษณา</h3>
+            <p>หากต้องการติดต่อกองบรรณาธิการ หรือสนใจลงพื้นที่โฆษณาบนเว็บไซต์
+            สามารถติดต่อได้ที่:
+            | Email: support@dojinworld.com |</p>
+        </div>
+    </footer>
+
+    <script src="doujins.js"></script>
+    <script>
+        const itemsPerPage = 20;
+        let currentPage = 1;
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let adDelayTimeout = null;
+        let closeTimerInterval = null;
+
+        const homeView = document.getElementById('homeView');
+        const readerView = document.getElementById('readerView');
+        const doujinGrid = document.getElementById('doujinGrid');
+        const paginationContainer = document.getElementById('pagination');
+        const categoryBar = document.getElementById('categoryBar');
+        const sectionTitle = document.getElementById('sectionTitle');
+        const readingTitle = document.getElementById('readingTitle');
+        const readerPagesContainer = document.getElementById('readerPagesContainer');
+        const searchInput = document.getElementById('searchInput');
+
+        function handleSearch() {
+            searchQuery = searchInput.value.trim().toLowerCase();
+            currentPage = 1;
+            renderCatalog(currentPage);
+        }
+
+        function renderCategories() {
+            categoryBar.innerHTML = '';
+            const categoriesSet = new Set(['all']);
+            
+            if (typeof doujinsList !== 'undefined') {
+                doujinsList.forEach(item => {
+                    if (item.categories && Array.isArray(item.categories)) {
+                        item.categories.forEach(cat => categoriesSet.add(cat));
+                    }
+                });
+            }
+
+            categoriesSet.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `cat-btn ${currentCategory === cat ? 'active' : ''}`;
+                btn.textContent = cat === 'all' ? 'ทั้งหมด' : cat;
+                btn.addEventListener('click', () => {
+                    currentCategory = cat;
+                    currentPage = 1;
+                    sectionTitle.textContent = cat === 'all' ? 'รายการโดจินทั้งหมด' : `หมวดหมู่: ${cat}`;
+                    renderCategories();
+                    renderCatalog(currentPage);
+                });
+                categoryBar.appendChild(btn);
+            });
+        }
+
+        function renderCatalog(page) {
+            currentPage = page;
+            doujinGrid.innerHTML = '';
+            
+            if (typeof doujinsList !== 'undefined' && doujinsList.length > 0) {
+                const filteredList = doujinsList.filter(item => {
+                    const matchCategory = currentCategory === 'all' || (item.categories && item.categories.includes(currentCategory));
+                    const matchSearch = searchQuery === '' || item.title.toLowerCase().includes(searchQuery);
+                    return matchCategory && matchSearch;
+                });
+
+                if (filteredList.length === 0) {
+                    doujinGrid.innerHTML = '<p style="color:#888; grid-column: 1/-1; text-align:center; padding: 40px;">ไม่พบโดจินที่คุณค้นหา</p>';
+                    paginationContainer.innerHTML = '';
+                    return;
+                }
+
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const pageItems = filteredList.slice(startIndex, endIndex);
+
+                pageItems.forEach((item) => {
+                    const card = document.createElement('div');
+                    card.className = 'doujin-card';
+                    
+                    let tagsHtml = '';
+                    if (item.categories && Array.isArray(item.categories)) {
+                        tagsHtml = item.categories.map(tag => `<span class="doujin-tag">${tag}</span>`).join('');
+                    }
+
+                    card.innerHTML = `
+                        <img class="doujin-thumb" src="${item.thumbnail}" alt="${item.title}">
+                        <div class="doujin-info">
+                            <div class="doujin-name">${item.title}</div>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-top:5px;">
+                                <span class="doujin-chapters">${item.pages.length} หน้า</span>
+                                <div class="doujin-tags-container">${tagsHtml}</div>
+                            </div>
+                        </div>
+                    `;
+                    card.addEventListener('click', () => {
+                        const originalIndex = doujinsList.indexOf(item);
+                        openReader(originalIndex);
+                    });
+                    doujinGrid.appendChild(card);
+                });
+
+                renderPaginationControls(filteredList.length);
+            } else {
+                doujinGrid.innerHTML = '<p style="color:#888;">ยังไม่มีรายการโดจิน</p>';
+            }
+        }
+
+        function renderPaginationControls(totalFilteredItems) {
+            paginationContainer.innerHTML = '';
+            const totalPages = Math.ceil(totalFilteredItems / itemsPerPage);
+
+            if (totalPages <= 1) return;
+
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.textContent = '< ก่อนหน้า';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.addEventListener('click', () => {
+                renderCatalog(currentPage - 1);
+                window.scrollTo({ top: 300, behavior: 'smooth' });
+            });
+            paginationContainer.appendChild(prevBtn);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                btn.textContent = i;
+                btn.addEventListener('click', () => {
+                    renderCatalog(i);
+                    window.scrollTo({ top: 300, behavior: 'smooth' });
+                });
+                paginationContainer.appendChild(btn);
+            }
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.textContent = 'ถัดไป >';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.addEventListener('click', () => {
+                renderCatalog(currentPage + 1);
+                window.scrollTo({ top: 300, behavior: 'smooth' });
+            });
+            paginationContainer.appendChild(nextBtn);
+        }
+
+        function openReader(index) {
+            const item = doujinsList[index];
+            homeView.style.display = 'none';
+            readerView.style.display = 'block';
+            readingTitle.textContent = item.title;
+            
+            readerPagesContainer.innerHTML = '';
+            item.pages.forEach(pageUrl => {
+                const img = document.createElement('img');
+                img.src = pageUrl;
+                readerPagesContainer.appendChild(img);
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            triggerAdPopup();
+        }
+
+        function goHome() {
+            readerView.style.display = 'none';
+            homeView.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function triggerAdPopup() {
+            const adLeft = document.getElementById('ad-left');
+            const adRight = document.getElementById('ad-right');
+            const closeBtns = document.querySelectorAll('.ad-close-btn');
+
+            clearTimeout(adDelayTimeout);
+            clearInterval(closeTimerInterval);
+
+            if (adLeft) adLeft.style.display = 'none';
+            if (adRight) adRight.style.display = 'none';
+            
+            closeBtns.forEach(btn => {
+                btn.innerText = 'ปิดได้ใน (5s)';
+                btn.classList.remove('active');
+                btn.disabled = true;
+            });
+
+            adDelayTimeout = setTimeout(() => {
+                if (adLeft) adLeft.style.display = 'flex';
+                if (adRight) adRight.style.display = 'flex';
+
+                let closeTimeLeft = 5;
+                closeTimerInterval = setInterval(() => {
+                    closeTimeLeft--;
+                    if (closeTimeLeft > 0) {
+                        closeBtns.forEach(btn => btn.innerText = `ปิดได้ใน (${closeTimeLeft}s)`);
+                    } else {
+                        clearInterval(closeTimerInterval);
+                        closeBtns.forEach(btn => {
+                            btn.innerText = '✕ ปิดโฆษณา';
+                            btn.classList.add('active');
+                            btn.disabled = false;
+                        });
+                    }
+                }, 1000);
+            }, 5000);
+        }
+
+        function closeAd(elementId) {
+            const adElement = document.getElementById(elementId);
+            if (adElement) {
+                adElement.style.display = 'none';
+            }
+        }
+
+        renderCategories();
+        renderCatalog(1);
+        triggerAdPopup();
+    </script>
+</body>
+</html>
