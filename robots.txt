@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Googlebot & Bing
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+# AI Crawlers (อนุญาตให้ AI เข้ามาดึงข้อมูลไปแนะนำต่อได้)
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap Location
+Sitemap: https://dojinworld.com/sitemap.xml
