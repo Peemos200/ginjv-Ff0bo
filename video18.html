@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กำลังเล่นวิดีโอ - dojinworld.com</title>
+    
+    <!-- เรียกใช้ไฟล์กลางสำหรับควบคุมโฆษณา -->
+    <script src="ads-config.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
+
+        body { margin: 0; font-family: 'Prompt', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: linear-gradient(to bottom, #1a1a1a, #0a0a0a); border-bottom: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .logo { font-size: 28px; font-weight: 600; color: #e50914; text-decoration: none; text-shadow: 0 2px 4px rgba(229,9,20,0.3); }
+        .contact-top { font-size: 14px; color: #888; }
+
+        .ads-top-wrapper { display: flex; flex-direction: column; gap: 15px; max-width: 900px; margin: 25px auto; padding: 0 20px; }
+        .ad-slider-container { width: 100%; overflow: hidden; border-radius: 10px; background: #111; box-shadow: 0 5px 20px rgba(0,0,0,0.5); border: 1px solid #222; }
+        .ad-track { display: flex; width: 500%; animation: slideShow 20s infinite; }
+        .ad-item { width: 100%; height: 110px; display: flex; align-items: center; justify-content: center; }
+        
+        @keyframes slideShow { 
+            0%, 15% { transform: translateX(0); } 
+            20%, 35% { transform: translateX(-20%); } 
+            40%, 55% { transform: translateX(-40%); } 
+            60%, 75% { transform: translateX(-60%); } 
+            80%, 95% { transform: translateX(-80%); } 
+            100% { transform: translateX(0); } 
+        }
+
+        .video-container { text-align: center; padding: 0 20px; max-width: 900px; margin: 0 auto; }
+        video { width: 100%; background: black; border-radius: 12px; margin-top: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); border: 1px solid #222; }
+        
+        /* แก้ไขแจ้งเตือนแล้ว: ลบ display: inline-block; ออก เหลือแค่ float: left; และปรับดีไซน์ให้เข้ากับหน้าแรก */
+        .back-btn { color: #fff; text-decoration: none; background: #e50914; padding: 10px 25px; border-radius: 30px; transition: all 0.3s ease; margin-bottom: 15px; float: left; font-weight: 400; box-shadow: 0 4px 10px rgba(229,9,20,0.4); }
+        .back-btn:hover { background: #ff0a16; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229,9,20,0.6); }
+
+        footer { background: #0a0a0a; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 40px; line-height: 1.8; color: #777; font-size: 14px; clear: both; }
+        footer h3 { color: #aaaaaa; margin-top: 0; margin-bottom: 10px; font-weight: 400; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">dojinworld.com</a>
+        <div class="contact-top">ติดต่อ Email: support@dojinworld.com</div>
+    </header>
+
+    <!-- พื้นที่โฆษณา 5 ชุดด้านบนสุด -->
+    <div class="ads-top-wrapper" id="ads-container"></div>
+
+    <div class="video-container">
+        <a href="index.html" class="back-btn">⬅ กลับหน้าแรก</a>
+        <div style="clear: both;"></div>
+        <!-- 👇 เปลี่ยนลิงก์วิดีโอ .mp4 ของคลิปใหม่ตรงนี้ 👇 -->
+        <video src="https://clip-thai.mousekat-logistic.xyz/media-storage/videos/1793247718720-4d4c0q6phwj.mp4" controls controlslist="nodownload"></video>
+    </div>
+
+    <footer>
+        <h3>ติดต่อเรา / ลงโฆษณา</h3>
+        <p>หากต้องการติดต่อกองบรรณาธิการ หรือสนใจลงพื้นที่โฆษณาบนเว็บไซต์</p>
+        <p>สามารถติดต่อได้ที่:<br>| Email: support@dojinworld.com |</p>
+    </footer>
+
+    <!-- สคริปต์ดึงโฆษณาอัตโนมัติ -->
+    <script>
+        const wrapper = document.getElementById('ads-container');
+        
+        for (let i = 1; i <= 5; i++) {
+            let setKey = 'set' + i;
+            let adsArray = allAds[setKey]; 
+            
+            let trackHTML = '';
+            adsArray.forEach(ad => {
+                trackHTML += `<div class="ad-item"><a href="${ad.url}" target="_blank" style="display:block; width:100%; height:100%;"><img src="${ad.img}" style="width:100%; height:100%; object-fit: contain; background-color: #000;"></a></div>`;
+            });
+
+            wrapper.innerHTML += `
+                <div class="ad-slider-container">
+                    <div class="ad-track">
+                        ${trackHTML}
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+
+</body>
+</html>

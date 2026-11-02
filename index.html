@@ -1,683 +1,307 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dojinworld.com</title>
     
-    <!-- 📌 SEO Meta Tags สำหรับ Google Search & AI Search (จัดเต็ม) -->
-    <title>DojinWorld - อ่านโดจินแปลไทย อ่านการ์ตูนออนไลน์ฟรี คมชัด HD</title>
-    <meta name="description" content="DojinWorld เว็บรวมโดจินแปลไทย อ่านการ์ตูนออนไลน์ฟรี คมชัด HD อัปเดตใหม่ทุกวัน รวมทุกหมวดหมู่ อนิเมะ แฟนตาซี นักเรียน คุณครู ภาพสี อ่านง่ายบนมือถือ">
-    <meta name="keywords" content="dojinworld, dojinworld.com, โดจิน, โดจินไทย, โดจินแปลไทย, อ่านโดจิน, อ่านการ์ตูน, การ์ตูนแปลไทย, โดจินอนิเมะ, โดจินภาพสี, โดจินหมวดหมู่, โดจินใหม่, โดจิน PDF, doujin, doujinshi, doujin th, doujin thai, read doujin">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="DojinWorld">
-    <link rel="canonical" href="https://dojinworld.com/">
-
-    <!-- 📌 Open Graph Meta Tags (สำหรับเวลาแชร์ลิงก์ลง Facebook, Discord, LINE) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dojinworld.com/">
-    <meta property="og:title" content="DojinWorld - อ่านโดจินแปลไทย อ่านการ์ตูนออนไลน์ฟรี">
-    <meta property="og:description" content="เว็บรวมโดจินแปลไทย คมชัด อ่านฟรี อัปเดตใหม่ทุกวัน ครบทุกหมวดหมู่">
-    <meta property="og:image" content="https://dojinworld.com/android-chrome-512x512.png">
-    <meta property="og:site_name" content="DojinWorld">
-
-    <!-- 📌 Twitter Card Meta Tags (สำหรับ X / Twitter - สำคัญมากสำหรับการโปรโมตสายนี้) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DojinWorld - อ่านโดจินแปลไทย อ่านการ์ตูนออนไลน์ฟรี">
-    <meta name="twitter:description" content="เว็บรวมโดจินแปลไทย คมชัด อ่านฟรี อัปเดตใหม่ทุกวัน ครบทุกหมวดหมู่">
-    <meta name="twitter:image" content="https://dojinworld.com/android-chrome-512x512.png">
-
-    <!-- 📌 Structured Data (JSON-LD Schema) เพื่อให้ AI Search อ่านโครงสร้างเว็บออกทันที -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "DojinWorld",
-      "url": "https://dojinworld.com/",
-      "description": "ศูนย์รวมโดจินแปลไทย อัปเดตตอนใหม่ล่าสุด อ่านการ์ตูนโดจินออนไลน์ฟรี",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://dojinworld.com/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
+    <!-- เรียกใช้ไฟล์กลางสำหรับควบคุมโฆษณา -->
+    <script src="ads-config.js"></script>
 
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #121212; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        /* นำเข้าฟอนต์ Google Fonts เพื่อให้เว็บดูสวยทันสมัยขึ้น */
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
 
-        header { 
-            padding: 15px 30px; 
-            background: #1a1a1a; 
-            position: fixed; 
-            width: 100%; 
-            top: 0; 
-            z-index: 1000; 
-            border-bottom: 2px solid #2a2a2a; 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .logo { 
-            font-size: 24px; 
-            font-weight: 900; 
-            color: #ff4757; 
-            letter-spacing: 1px; 
-            cursor: pointer; 
-            text-decoration: none;
-        }
-        .nav-contact {
-            color: #aaa;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .nav-contact:hover {
-            color: #ff4757;
-        }
-        .logo span { color: #fff; }
+        /* ตั้งค่าพื้นฐานใหม่ให้ดูพรีเมียม */
+        body { margin: 0; font-family: 'Prompt', sans-serif; background-color: #0a0a0a; color: #ffffff; }
+        
+        /* ส่วนหัวเว็บ (Header) */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: linear-gradient(to bottom, #1a1a1a, #0a0a0a); border-bottom: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .logo { font-size: 28px; font-weight: 600; color: #e50914; text-decoration: none; text-shadow: 0 2px 4px rgba(229,9,20,0.3); }
+        .contact-top { font-size: 14px; color: #888; }
 
-        .wrapper {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1450px;
-            margin: 80px auto 0 auto;
-            padding: 0 20px;
+        /* โฆษณาชุดที่ 1 */
+        .ad-slider-container { width: 100%; max-width: 900px; margin: 30px auto; overflow: hidden; border-radius: 10px; background: #111; box-shadow: 0 5px 20px rgba(0,0,0,0.5); border: 1px solid #222; }
+        .ad-track { display: flex; width: 500%; animation: slideShow 20s infinite; }
+        .ad-item { width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; }
+        
+        @keyframes slideShow { 
+            0%, 15% { transform: translateX(0); } 
+            20%, 35% { transform: translateX(-20%); } 
+            40%, 55% { transform: translateX(-40%); } 
+            60%, 75% { transform: translateX(-60%); } 
+            80%, 95% { transform: translateX(-80%); } 
+            100% { transform: translateX(0); } 
         }
+        /* ช่องค้นหา (Search Bar) */
+        .search-container { display: flex; justify-content: center; margin: 10px 20px 0 20px; }
+        .search-input { width: 100%; max-width: 450px; padding: 12px 25px; border-radius: 30px; border: 1px solid #333; background-color: #151515; color: #fff; font-family: 'Prompt', sans-serif; font-size: 15px; transition: all 0.3s ease; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
 
-        /* ป้ายโฆษณายาวซ้าย-ขวา (Sticky - ปิดไม่ได้) */
-        .side-sticky-ad {
-            width: 180px;
-            flex-shrink: 0;
-            padding: 20px 0;
-            position: sticky;
-            top: 90px;
-            overflow-y: auto;
-        }
-        .long-banner {
-            width: 100%;
-            height: 500px;
-            background: #1e1e1e;
-            border: 2px dashed #333;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #666;
-            font-size: 13px;
-            padding: 10px;
-        }
+        /* แถบปุ่มเลือกหมวดหมู่ ปรับให้ดูเป็นปุ่มกดมากขึ้น */
+        .category-bar { display: flex; justify-content: center; gap: 15px; margin: 30px 0 10px 0; padding: 0 20px; flex-wrap: wrap; }
+        .cat-btn { background-color: #1a1a1a; color: #aaa; border: 1px solid #333; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-size: 15px; font-family: 'Prompt', sans-serif; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .cat-btn:hover { background-color: #2a2a2a; color: #fff; transform: translateY(-2px); }
+        .cat-btn.active { background-color: #e50914; color: #fff; border-color: #e50914; box-shadow: 0 4px 10px rgba(229,9,20,0.4); }
 
-        .main-content {
-            flex-grow: 1;
-            max-width: 950px;
-            margin: 0 20px;
-            padding: 20px 0;
-        }
+        /* พื้นที่แสดงคลิป */
+        .content-area { padding: 20px 40px 10px 40px; max-width: 1200px; margin: 0 auto; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+        
+        /* การ์ดวิดีโอ (อัปเกรดความสวยงาม) */
+        .video-card { background: #151515; border-radius: 12px; overflow: hidden; transition: all 0.3s ease; border: 1px solid #222; box-shadow: 0 4px 10px rgba(0,0,0,0.3); position: relative; }
+        .video-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.7); border-color: #444; }
+        
+        .thumbnail-container { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; }
+        .thumbnail { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+        .video-card:hover .thumbnail { opacity: 0.7; }
+        
+        /* ปุ่ม Play ลอยขึ้นมาตอนเอาเมาส์ชี้ */
+        .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; }
+        .video-card:hover .play-overlay { opacity: 1; }
+        .play-icon { width: 50px; height: 50px; background: rgba(229, 9, 20, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .play-icon::after { content: ''; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #fff; margin-left: 4px; }
 
-        /* โฆษณาตารางบน 6 ช่อง */
-        .top-ad-grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-            background: #181818;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #2a2a2a;
-        }
-        .top-ad-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .top-ad-box {
-            height: 90px;
-            background: #222;
-            border: 1px dashed #444;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-            font-size: 12px;
-        }
+        .video-title { padding: 15px; font-size: 15px; color: #eaeaea; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 300; }
 
-        /* 🔍 ช่องค้นหาและปุ่มหมวดหมู่ */
-        .search-bar-container {
-            margin-bottom: 15px;
-            display: flex;
-            gap: 10px;
-        }
-        .search-input {
-            width: 100%;
-            padding: 10px 16px;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 20px;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .search-input:focus {
-            border-color: #ff4757;
-        }
+        /* ปุ่ม Load More (ออกแบบใหม่) */
+        .load-more-container { text-align: center; margin: 20px 0 60px 0; }
+        .load-more-btn { background: transparent; color: #e50914; border: 2px solid #e50914; padding: 12px 35px; border-radius: 30px; cursor: pointer; font-size: 16px; font-family: 'Prompt', sans-serif; font-weight: 600; transition: all 0.3s ease; }
+        .load-more-btn:hover { background: #e50914; color: #fff; box-shadow: 0 4px 15px rgba(229,9,20,0.4); transform: scale(1.05); }
 
-        .category-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        .cat-btn {
-            background: #1a1a1a;
-            color: #aaa;
-            border: 1px solid #333;
-            padding: 6px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .cat-btn:hover { background: #333; color: #fff; }
-        .cat-btn.active {
-            background: #ff4757;
-            color: #fff;
-            border-color: #ff4757;
-            font-weight: bold;
-        }
-
-        .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-left: 4px solid #ff4757;
-            padding-left: 10px;
-            color: #fff;
-        }
-        .doujin-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .doujin-card {
-            background: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #2a2a2a;
-            cursor: pointer;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .doujin-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff4757;
-        }
-        .doujin-thumb {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            background: #222;
-        }
-        .doujin-info {
-            padding: 10px;
-        }
-        .doujin-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .doujin-chapters {
-            font-size: 12px;
-            color: #888;
-        }
-        .doujin-tags-container {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-            margin-top: 4px;
-        }
-        .doujin-tag {
-            background: #2a2a2a;
-            color: #ff4757;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        .pagination-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        .page-btn {
-            background: #1a1a1a;
-            color: #fff;
-            border: 1px solid #333;
-            padding: 8px 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.2s;
-        }
-        .page-btn:hover { background: #333; }
-        .page-btn.active {
-            background: #ff4757;
-            border-color: #ff4757;
-            font-weight: bold;
-        }
-        .page-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        #readerView { display: none; }
-        .reader-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .back-btn { background: #ff4757; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        .reader-pages { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .reader-pages img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-
-        footer {
-            background: #181818;
-            border-top: 1px solid #2a2a2a;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 50px;
-        }
-        .contact-box { max-width: 600px; margin: 0 auto; }
-        .contact-box h3 { color: #fff; margin-bottom: 10px; font-size: 18px; }
-        .contact-box p { color: #aaa; font-size: 14px; line-height: 1.6; white-space: pre-line; }
-
-        /* โฆษณาซ้าย-ขวาแบบป็อปอัป (ปิดได้ 5 วิ) */
-        .ad-banner {
-            position: fixed;
-            top: 100px;
-            width: 160px;
-            height: 500px;
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            z-index: 9999;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .ad-left { left: 15px; }
-        .ad-right { right: 15px; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .ad-close-btn {
-            width: 100%;
-            padding: 6px;
-            background-color: #333;
-            color: #888;
-            border: none;
-            cursor: not-allowed;
-            font-size: 11px;
-            font-weight: bold;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .ad-close-btn.active {
-            background-color: #ff4757;
-            color: white;
-            cursor: pointer;
-        }
-        .ad-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 12px;
-            text-align: center;
-            padding: 10px;
-        }
-
-        /* 📱 จัดการการแสดงผลบนจอคอมขนาดเล็กและมือถือ */
-        @media (max-width: 1400px) { 
-            .side-sticky-ad { display: none; } 
-        }
-
-        @media (max-width: 768px) {
-            .ad-banner {
-                top: auto;
-                bottom: 15px;
-                width: 140px;
-                height: 220px;
-            }
-            .ad-left { left: 10px; }
-            .ad-right { right: 10px; }
-
-            .top-ad-grid-container {
-                grid-template-columns: 1fr;
-            }
+        footer { background: #0a0a0a; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 20px; line-height: 1.8; color: #777; font-size: 14px; }
+        footer h3 { color: #aaaaaa; margin-top: 0; margin-bottom: 10px; font-weight: 400; }
+        
+        /* แก้ไขชื่อคลาสให้ตรงกับใน HTML แล้ว */
+        .watermark-logo {
+            position: absolute;
+            bottom: 8px; /* ระยะห่างจากขอบล่าง */
+            left: 8px; /* ระยะห่างจากขอบซ้าย */
+            width: 90px; /* ปรับขนาดความกว้างของโลโก้ได้ที่นี่ */
+            z-index: 2; /* ให้อยู่เหนือรูปปก */
+            pointer-events: none; /* ไม่ให้โลโก้บังการคลิกเมาส์ */
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.8)); /* เพิ่มเงาดำให้โลโก้ลอยเด่นชัดขึ้น */
         }
     </style>
 </head>
 <body>
 
-    <!-- แถบโฆษณาเด้งฝั่งซ้าย (ปิดได้ 5 วิ) -->
-    <div id="ad-left" class="ad-banner ad-left">
-        <button class="ad-close-btn" onclick="closeAd('ad-left')" disabled>ปิดได้ใน (5s)</button>
-        <div class="ad-content">
-            <p>พื้นที่โฆษณาซ้าย</p>
-        </div>
-    </div>
-
-    <!-- แถบโฆษณาเด้งฝั่งขวา (ปิดได้ 5 วิ) -->
-    <div id="ad-right" class="ad-banner ad-right">
-        <button class="ad-close-btn" onclick="closeAd('ad-right')" disabled>ปิดได้ใน (5s)</button>
-        <div class="ad-content">
-            <p>พื้นที่โฆษณาขวา</p>
-        </div>
-    </div>
-
     <header>
-        <a class="logo" onclick="goHome()">Dojin<span>World</span></a>
-        <a href="mailto:support@dojinworld.com" class="nav-contact">
-            ✉️ ติดต่อเรา: support@dojinworld.com
-        </a>
+        <a href="#" class="logo">dojinworld.com</a>
+        <div class="contact-top">ติดต่อ Email: support@dojinworld.com</div>
     </header>
 
-    <div class="wrapper">
-        <!-- โฆษณายาวซ้าย (ปิดไม่ได้ - ซ่อนบนมือถือ) -->
-        <aside class="side-sticky-ad">
-            <div class="long-banner">โฆษณายาวซ้าย<br>(Sticky Banner)</div>
-        </aside>
+    <!-- สไลด์โฆษณาชุดที่ 1 -->
+    <div class="ad-slider-container">
+        <div class="ad-track" id="home-ad-track"></div>
+    </div>
+  
+    <!-- ช่องค้นหาวิดีโอ -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นหาชื่อคลิป..." onkeyup="searchVideos(this.value)">
+    </div>
+    
+    <!-- ปุ่มหมวดหมู่ทั้ง 3 หมวดหมู่ (ข้อมูลเดิมของคุณ) -->
+    <div class="category-bar">
+        <button class="cat-btn active" onclick="filterCategory('all', this)">ทั้งหมด</button>
+        <button class="cat-btn" onclick="filterCategory('cat1', this)">คลิปหลุด</button>
+        <button class="cat-btn" onclick="filterCategory('cat2', this)">Onlyfans</button>
+        <button class="cat-btn" onclick="filterCategory('cat3', this)">JAV</button>
+    </div>
 
-        <main class="main-content">
-            <!-- โฆษณาตารางบน 6 ช่อง -->
-            <div class="top-ad-grid-container">
-                <div class="top-ad-column">
-                    <div class="top-ad-box">พื้นที่โฆษณาบน 1 (ซ้าย)</div>
-                    <div class="top-ad-box">พื้นที่โฆษณาบน 2 (ซ้าย)</div>
-                    <div class="top-ad-box">พื้นที่โฆษณาบน 3 (ซ้าย)</div>
-                </div>
-                <div class="top-ad-column">
-                    <div class="top-ad-box">พื้นที่โฆษณาบน 4 (ขวา)</div>
-                    <div class="top-ad-box">พื้นที่โฆษณาบน 5 (ขวา)</div>
-                    <div class="top-ad-box">พื้นที่โฆษณาบน 6 (ขวา)</div>
-                </div>
-            </div>
+    <!-- พื้นที่แสดงคลิป -->
+    <div class="content-area">
+        <div class="video-grid" id="video-grid"></div>
+    </div>
 
-            <!-- หน้าแรก -->
-            <div id="homeView">
-                <!-- 🔍 ช่องค้นหา -->
-                <div class="search-bar-container">
-                    <input type="text" id="searchInput" class="search-input" placeholder="🔍 พิมพ์ค้นหาชื่อเรื่อง..." oninput="handleSearch()">
-                </div>
-
-                <div class="category-bar" id="categoryBar"></div>
-                <h2 class="section-title" id="sectionTitle">รายการโดจินทั้งหมด</h2>
-                <div class="doujin-grid" id="doujinGrid"></div>
-                <div class="pagination-container" id="pagination"></div>
-            </div>
-
-            <!-- หน้าอ่านการ์ตูน -->
-            <div id="readerView">
-                <div class="reader-header">
-                    <button class="back-btn" onclick="goHome()">← กลับหน้าแรก</button>
-                    <h2 id="readingTitle" style="color:#fff; font-size:18px;"></h2>
-                    <div></div>
-                </div>
-                <div class="reader-pages" id="readerPagesContainer"></div>
-            </div>
-        </main>
-
-        <!-- โฆษณายาวขวา (ปิดไม่ได้ - ซ่อนบนมือถือ) -->
-        <aside class="side-sticky-ad">
-            <div class="long-banner">โฆษณายาวขวา<br>(Sticky Banner)</div>
-        </aside>
+    <!-- กล่องปุ่มแสดงเพิ่มเติม (Load More) -->
+    <div class="load-more-container" id="load-more-box">
+        <button class="load-more-btn" onclick="loadMoreVideos()">โหลดคลิปเพิ่มเติม ⬇</button>
     </div>
 
     <footer>
-        <div class="contact-box">
-            <h3>ติดต่อเรา / ลงโฆษณา</h3>
-            <p>หากต้องการติดต่อกองบรรณาธิการ หรือสนใจลงพื้นที่โฆษณาบนเว็บไซต์
-            สามารถติดต่อได้ที่:
-            | Email: support@dojinworld.com |</p>
-        </div>
+        <h3>ติดต่อเรา / ลงโฆษณา</h3>
+        <p>หากต้องการติดต่อกองบรรณาธิการ หรือสนใจลงพื้นที่โฆษณาบนเว็บไซต์</p>
+        <p>สามารถติดต่อได้ที่:<br>| Email: support@dojinworld.com |</p>
     </footer>
 
-    <script src="doujins.js"></script>
     <script>
-        const itemsPerPage = 20;
-        let currentPage = 1;
+        // 1. ดึงโฆษณาชุดที่ 1 มาแสดง
+        const homeTrack = document.getElementById('home-ad-track');
+        if (typeof allAds !== 'undefined' && allAds.set1) {
+            let adHTML = '';
+            allAds.set1.forEach(ad => {
+                adHTML += `<div class="ad-item"><a href="${ad.url}" target="_blank" style="display:block; width:100%; height:100%;"><img src="${ad.img}" style="width:100%; height:100%; object-fit: contain; background-color: #000;"></a></div>`;
+            });
+            homeTrack.innerHTML = adHTML;
+        }
+
+        // 2. รายชื่อคลิปทั้งหมด (ข้อมูลเดิมที่คุณทำไว้ ไม่มีการเปลี่ยนแปลง)
+        const videoList = [
+            { title: "", link: "https://t.me/dojinworldl", image: "images/i0.png", category: "cat1"},
+            { title: "ผัวจีนที่จริงใจ ควยต้องใหญ่ ควยต้องยาว เสียวจนน้ำหีไหลเยิ้ม", link: "video78.html", image: "images/o78.jpg", category: "cat1" },
+            { title: "ครูฝึกสอน มาเรียนงานกับครูรุ่นพี่ โดนจัดหนักจัดหนักกระแทก", link: "video77.html", image: "images/o77.jpg", category: "cat1" },
+            { title: "น้องสาวตัวเล็ก หาควยสเป็กตรมคลิป ใครเท่าน้องบอก DM ไปได้เลย", link: "video76.html", image: "images/o76.jpg", category: "cat1" },
+            { title: " แอบเสียวในห้องน้ำ ตามไปอมควยแฟน จนได้จัดหนัก", link: "video75.html", image: "images/o75.jpg", category: "cat1" },
+            { title: "ก่อนออกบ้านไปเรียน ขอเติมพลังหน่อย เสียวจนน้ำหีไหลเยิ้ม", link: "video74.html", image: "images/o74.jpg", category: "cat1" },
+            { title: "เป็นเมียทรงเอต้องอดทน เจอควยฝั่งมุขเข้าให้ ทั้งแสบทั้งจุก", link: "video73.html", image: "images/o73.jpg", category: "cat1" },
+            { title: "สาวจีนน่าตาดี โดนจับมัด แล้วกระหน่ำตอกไม่ยั้ง", link: "video72.html", image: "images/o72.jpg", category: "cat1" },
+            { title: "สาวขี้เล่นเผยคลิปส่วนตัวที่ไม่เคยคิดว่าจะมีใครเห็น", link: "video71.html", image: "images/o71.jpg", category: "cat1" },
+            { title: "ADN-106  เพื่อคุณ..ฉันยอม", link: "video70.html", image: "images/o70.png", category: "cat3" },
+            { title: "NSFS-164 คิดผิดเลี้ยงโจรเมียโดนแตกใน", link: "video69.html", image: "images/o69.png", category: "cat3" },
+            { title: "MIDV-513 เดบิวต์นักศึกษานมใหญ่คัพเฮช", link: "video68.html", image: "images/o68.png", category: "cat3" },
+            { title: "SDMF-024 ห้องน้ำเสพสุขสนุกแบบพี่น้อง", link: "video67.html", image: "images/o67.png", category: "cat3" },
+            { title: "IPZZ-052 ติดหนึบลูบไล้ออแกไนซ์งานแต่ง", link: "video66.html", image: "images/o66.png", category: "cat3" },
+            { title: "IPX-453 ใจไม่เป็นอันอยู่กับเนื้อกับตัว เมื่อเจอครูติวเตอร์แสนน่ารัก", link: "video65.html", image: "images/o65.png", category: "cat3" },
+            { title: "IPX-527 ขายหอยใช้หนี้สามีล้มละลาย", link: "video64.html", image: "images/o64.png", category: "cat3" },
+            { title: "FSDSS-202 ภาพตัดเชือกพันสามวันรู้เรื่อง", link: "video63.html", image: "images/o63.png", category: "cat3" },
+            { title: "DLDSS-048 เย็ดเมียน้องนมใหญ่หุ่นเด็ดแตกใน", link: "video62.html", image: "images/o62.png", category: "cat3" },
+            { title: "DASS-191 ลูกอ้อนเดียงสาปรารถนาไออุ่น", link: "video61.html", image: "images/o61.png", category: "cat3" },
+            { title: "ADN-204  เหงาเกินแก้ขอแหย่สองที", link: "video60.html", image: "images/o60.png", category: "cat3" },
+            { title: "GVG-971 คุณแม่ยังสาวขาวทะลุร่าง", link: "video59.html", image: "images/o59.png", category: "cat3" },
+            { title: "STARS-808 สาวผมสั้นเล่นชู้กับหนุ่มหน้าจืดครูพละ", link: "video58.html", image: "images/o58.png", category: "cat3" },
+            { title: "VEC-372 เพื่อนลูกสุดหล่อขอห่อไปกินบนเตียง", link: "video57.html", image: "images/o57.png", category: "cat3" },
+            { title: "STARS-957 เซ็กส์เน้นปากทั้งดูดอมเลียกับสาวหุ่นเด็ด", link: "video56.html", image: "images/o56.png", category: "cat3" },
+            { title: "STARS-948 ถ้ายอมกลับใจเป็นคนดีครูให้เย็ดหีโอเคมั้ย", link: "video55.html", image: "images/o55.png", category: "cat3" },
+            { title: "STARS-931 เดบิวต์นางเอกใหม่อดีตนักแสดงละครเวที", link: "video54.html", image: "images/o54.png", category: "cat3" },
+            { title: "STARS-866 นวดสยิวโดนติ้วจนเงี่ยน หนังAV", link: "video53.html", image: "images/o53.png", category: "cat3" },
+            { title: "STARS-849 พันธนาการจับขึงแล้วเย็ดสาวสวย", link: "video52.html", image: "images/o52.png", category: "cat3" },        
+            { title: "SSIS-308 เย็ดสาวสวยหุ่นดี5ฉากสุดเสียว", link: "video51.html", image: "images/o51.png", category: "cat3" },
+            { title: "meriolchan นางพยายาบาลยั่วสวาท บริการเด็ดถึงใจ", link: "video50.html", image: "images/o50.png", category: "cat2" },
+            { title: "jeenzen น้องสาวนมโต น่าจัดหนัก ดาวโอลีแฟน โดนผัวจัดหนักประตูหลัง", link: "video49.html", image: "images/o49.png", category: "cat2" },
+            { title: "pymex9 กินเจเสร็จแล้ว เชิญกินหนูต่อได้เลยค่ะ", link: "video48.html", image: "images/o48.png", category: "cat2" },
+            { title: "pymex9 มาโชว์ความน่ารักเต็มพิกัด พิชิตควยหนุ่มๆ", link: "video47.html", image: "images/o47.png", category: "cat2" },
+            { title: "pymex9 น้องสาวสวยสายร่าน โชว์หอยให้หนุ่มๆ เงี่ยนตาม", link: "video46.html", image: "images/o46.png", category: "cat2" },
+            { title: "Deerlong ขึ้นขย่มควยแฟนมิดด้าม แทงมิดหีจุกๆ", link: "video45.html", image: "images/o45.png", category: "cat2" },
+            { title: "Jeedjad_ss น้องจี๊ดจ๊าด แอบซ่อนในตู้เสื้อผ้า โดนซอยหีรัวไม่ยั้ง", link: "video44.html", image: "images/o44.png", category: "cat2" },
+            { title: "น้องนุ่มนิ่ม ใส่ชุดนักศึกษาจัดหนักสดคาชุด นั่งบดขย่มครางเสียว", link: "video43.html", image: "images/o43.png", category: "cat2" },
+            { title: "น้องส้มผัวพาฝรั่งคู่ขาจัดฝรั่งควยใหญ่มาจัดหนัก 2-1", link: "video42.html", image: "images/o42.png", category: "cat2" },
+            { title: "meriolchan น้องสาวคอสเพย์ชุดกระต่าย มายั่วความเงี่ยนให้หนุ่มๆ", link: "video41.html", image: "images/o41.png", category: "cat2" },
+            { title: "pedd_69xh น้องเป็ดหุ่นบาง เจอควยยาวแทงท่าหมาหน้ากระจก มิดลำจนแตกใน", link: "video40.html", image: "images/o40.png", category: "cat2" },
+            { title: "daniella_free น้องสาวสายฝาโชว์เสียวแทงหีตัวเอง", link: "video39.html", image: "images/o39.png", category: "cat2" },
+            { title: "Honeytipsy หลุดน้องสาวไทยนัดจัดกับพี่ชายเดี่ยว โม็คควยเสียวๆ", link: "video38.html", image: "images/o38.png", category: "cat2" },
+            { title: "Dirtybangg69 นัดจัด นัดเสียวเอาท์ดอร์ท้ายสวนหลังบ้าน", link: "video37.html", image: "images/o37.png", category: "cat2" },
+            { title: "Nong Punch หลับอยู่ผัวเงี่ยนถูหน้า จับโม็คควยแล้วขย่มซอยท่าหมาจนแตกใน", link: "video36.html", image: "images/o36.png", category: "cat2" },
+            { title: "peach_peachchie งานเด็ดคู่เทพ นัดชายเดี่ยวมาจัดหนักสวิงกิ้งมันส์ๆ", link: "video35.html", image: "images/o35.png", category: "cat2" },
+            { title: "poringgg12 น้องสาวสวยขึ้นขย่มควย โดนจับจัดหนักกระเด้ากระแทกหีไม่ยั้ง", link: "video34.html", image: "images/o34.png", category: "cat2" },
+            { title: "pigkaploy น้องสาวสวยหัวใจร่าน เรียกใช้บริการชายเดียวดาวดังมาจัดหนัก", link: "video33.html", image: "images/o33.png", category: "cat2" },
+            { title: "mickeemouse คู่รักวัยรุ่น ขึ้นขย่มจัดหนัก สลับดูดหีมันส์ๆ จนน้ำแตก", link: "video32.html", image: "images/o32.png", category: "cat2" },
+            { title: "Jbswg_diary น้องสาวรับงานจัดหนัก เอาท์ดอร์จัดหนักเสียวกันริมหน้าต่าง", link: "video31.html", image: "images/o31.png", category: "cat2" },
+            { title: "Imhotnurse คู่รัสายจัดหนัก ผัวช่วยเบ็ดหีให้เมียตอนเช้า กันจับเด้าเสียว", link: "video30.html", image: "images/o30.png", category: "cat2" },
+            { title: "Mspuiyi น้องสาวเงี่ยน ใช้ดิลโด้ใหญ่ยาวยัดหีช่วยตัวเองในห้องน้ำ", link: "video29.html", image: "images/o29.png", category: "cat2" },
+            { title: "peach_peachchie เอาสดกับเพื่อนชาย FWB ขย่มควยมันส์ๆ", link: "video28.html", image: "images/o28.png", category: "cat2" },
+            { title: "bararungbung คู่รักจากทางบ้าน กระเด้ากันตอนเช้าล้างหน้าไก่", link: "video27.html", image: "images/o27.png", category: "cat2" },
+            { title: "Boa_handcock1 นัดจัดหนุ่มหุ่นลีน โดนกระเด้าสวนด้วยควยใหญ่ๆ", link: "video26.html", image: "images/o26.png", category: "cat2" },
+            { title: "natchalabibi2929 น้องสาวไทยนมโต ทรงซ้อ ที่ใครหลายคนติดใจ", link: "video25.html", image: "images/o25.png", category: "cat2" },
+            { title: "น้องสาวเกาหลีหุ่นเด็ด kittylixo ดาวโอลี่แฟนหุ่นเอ็กซ์ น้องสาวแว่นที่จริงใจ", link: "video24.html", image: "images/o24.png", category: "cat2" },
+            { title: "น้องกวาง deerlong บริการนวดควยพร้อมขึ้รคร่อมให้แฟน", link: "video23.html", image: "images/o23.png", category: "cat2" },
+            { title: "Buchsaya น้องสาวช่วยตัวเอง โชว์จิ๋มเนียนๆ หีสวยขาวน่าจัดหนักมาก", link: "video22.html", image: "images/o22.png", category: "cat2" },
+            { title: "FuxxxYouu จัดหนักกันอย่างเด็ด ผัวกลับจากค่ายหื่นสุดขีด จับเมียตอกมันส์ๆ", link: "video21.html", image: "images/o21.png", category: "cat2" },
+            { title: "น้องยูกิ yukii199 จัดหนักกับแฟน ครางลั่นๆ เสียวจนน้ำหีไหลเยิ้ม", link: "video20.html", image: "images/o20.png", category: "cat2" },
+            { title: " merryxming จัดหนักกับเสี่ยอยู่ดีๆ เปิดประตูห้องเพิ่มความเสียว", link: "video19.html", image: "images/o19.png", category: "cat2" },
+            { title: "น้องฟูจิ fuji_chan เงี่ยนหน้ามืดตามัวให้ผู้ชายที่เจอกันครั้งแรก", link: "video18.html", image: "images/o18.png", category: "cat2" },
+            { title: "o_owennxx โอเว่น !! หนุ่มขี้เงี่ยนนัดน้องสาวตัวเล็กมาจัดหนักคาห้อง", link: "video17.html", image: "images/o17.png", category: "cat2" },
+            { title: "เดียร์ลอง โชว์เสียว ด้วยควยปลอม เห็นแล้วเงี่ยน", link: "video16.html", image: "images/o16.png", category: "cat2" },
+            { title: "Highsstn โดนกดหัว", link: "video15.html", image: "images/o15.png", category: "cat2" },
+            { title: "Fuji_chan น้องฟูจิ ฟูใจ", link: "video14.html", image: "images/o14.png", category: "cat2" },
+            { title: "น้องเจลลี่ เอากับยาม", link: "video13.html", image: "images/o13.png", category: "cat2" },
+            { title: "jeenzen น้องส้มโดนเอาประตูหลัง", link: "video12.html", image: "images/o12.png", category: "cat2" },
+            { title: "jbswg_diary น้องเจลลี่โดนสวิงหนักๆ กระแทกเน้น ๆ", link: "video11.html", image: "images/o11.png", category: "cat2" },
+            { title: "raelilblack วิวดีๆ กับดิลโด้คู่ใจ รัวจัดน้ำล้นรู", link: "video10.html", image: "images/o10.png", category: "cat2" },
+            { title: "irenkampong1 ขย่มคาเตียงสุดร้อนแรงกับแฟนหนุ่ม", link: "video9.html", image: "images/o9.png", category: "cat2" },
+            { title: "Munkawx น้องมันแกวอวอความแซ่บ บนที่นอน เนินนมโคตรสวย", link: "video8.html", image: "images/o8.png", category: "cat2" },
+            { title: "Siroccofans สาวไทยโซฮอตใส่ชุดอ่อย คืนเสียวจากห้องลับของคลับ", link: "video7.html", image: "images/o7.png", category: "cat2" },
+            { title: "น้องไข่เน่าเงี่ยนหีโดนเสียบมิดด้าม", link: "video6.html", image: "images/o6.png", category: "cat2" },
+            { title: "น้องไข่เน่าใส่ชุดพละ", link: "video5.html", image: "images/o5.png", category: "cat2" },    
+            { title: "kainaoa ไข่เน่าสาวน้อยจอมเงี่ยน ถอดกางเกง อมควยเอง", link: "video4.html", image: "images/o4.png", category: "cat2" },
+            { title: "ผัวมาหาทั้งทีต้องจัดเต็ม โม๊คควยเสียว ๆ", link: "video3.html", image: "images/o3.png", category: "cat1" },
+            { title: "รุ่นพี่สาวโสดโดนท่านี้จุก ดุ้นใหญ่ยาวซอยถี่ ๆ จนเอาออกไม่ทัน", link: "video2.html", image: "images/o2.png", category: "cat1" },
+            { title: "เขาว่าหนูเป็นเด็ดเสี่ย วันนี้ขายตัวแถมยังเจอดุ้นใหญ่", link: "video1.html", image: "images/o1.png", category: "cat1" },
+        ];
+
+        // 3. ระบบจัดการหน้า Load More และ ระบบค้นหา
         let currentCategory = 'all';
-        let searchQuery = '';
-        let adDelayTimeout = null;
-        let closeTimerInterval = null;
+        let searchQuery = ''; // ตัวแปรเก็บคำค้นหา
+        let displayCount = 12; // จำนวนเริ่มต้นที่แสดง 12 คลิป
+        const itemsPerClick = 12; // กด Load More 1 ครั้ง จะเพิ่ม 12 คลิป
 
-        const homeView = document.getElementById('homeView');
-        const readerView = document.getElementById('readerView');
-        const doujinGrid = document.getElementById('doujinGrid');
-        const paginationContainer = document.getElementById('pagination');
-        const categoryBar = document.getElementById('categoryBar');
-        const sectionTitle = document.getElementById('sectionTitle');
-        const readingTitle = document.getElementById('readingTitle');
-        const readerPagesContainer = document.getElementById('readerPagesContainer');
-        const searchInput = document.getElementById('searchInput');
+        function renderVideos() {
+            const grid = document.getElementById('video-grid');
+            const loadMoreBox = document.getElementById('load-more-box');
+            grid.innerHTML = "";
 
-        function handleSearch() {
-            searchQuery = searchInput.value.trim().toLowerCase();
-            currentPage = 1;
-            renderCatalog(currentPage);
-        }
-
-        function renderCategories() {
-            categoryBar.innerHTML = '';
-            const categoriesSet = new Set(['all']);
-            
-            if (typeof doujinsList !== 'undefined') {
-                doujinsList.forEach(item => {
-                    if (item.categories && Array.isArray(item.categories)) {
-                        item.categories.forEach(cat => categoriesSet.add(cat));
-                    }
-                });
+            // กรองหมวดหมู่
+            let filteredList = videoList;
+            if (currentCategory !== 'all') {
+                filteredList = filteredList.filter(video => video.category === currentCategory);
             }
 
-            categoriesSet.forEach(cat => {
-                const btn = document.createElement('button');
-                btn.className = `cat-btn ${currentCategory === cat ? 'active' : ''}`;
-                btn.textContent = cat === 'all' ? 'ทั้งหมด' : cat;
-                btn.addEventListener('click', () => {
-                    currentCategory = cat;
-                    currentPage = 1;
-                    sectionTitle.textContent = cat === 'all' ? 'รายการโดจินทั้งหมด' : `หมวดหมู่: ${cat}`;
-                    renderCategories();
-                    renderCatalog(currentPage);
-                });
-                categoryBar.appendChild(btn);
-            });
-        }
+            // กรองคำค้นหา (ถ้ามีการพิมพ์)
+            if (searchQuery.trim() !== '') {
+                filteredList = filteredList.filter(video => video.title.toLowerCase().includes(searchQuery.toLowerCase()));
+            }
 
-        function renderCatalog(page) {
-            currentPage = page;
-            doujinGrid.innerHTML = '';
-            
-            if (typeof doujinsList !== 'undefined' && doujinsList.length > 0) {
-                const filteredList = doujinsList.filter(item => {
-                    const matchCategory = currentCategory === 'all' || (item.categories && item.categories.includes(currentCategory));
-                    const matchSearch = searchQuery === '' || item.title.toLowerCase().includes(searchQuery);
-                    return matchCategory && matchSearch;
-                });
+            // ตัดเฉพาะจำนวนที่อนุญาตให้แสดง
+            let visibleList = filteredList.slice(0, displayCount);
 
-                if (filteredList.length === 0) {
-                    doujinGrid.innerHTML = '<p style="color:#888; grid-column: 1/-1; text-align:center; padding: 40px;">ไม่พบโดจินที่คุณค้นหา</p>';
-                    paginationContainer.innerHTML = '';
-                    return;
-                }
+            if (filteredList.length === 0) {
+                grid.innerHTML = `<p style="color: #777; grid-column: 1/-1; text-align: center; padding: 40px; font-size: 18px;">ไม่พบวิดีโอในหมวดหมู่ หรือคำค้นหานี้</p>`;
+                loadMoreBox.style.display = 'none';
+                return;
+            }
 
-                const startIndex = (page - 1) * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-                const pageItems = filteredList.slice(startIndex, endIndex);
-
-                pageItems.forEach((item) => {
-                    const card = document.createElement('div');
-                    card.className = 'doujin-card';
-                    
-                    let tagsHtml = '';
-                    if (item.categories && Array.isArray(item.categories)) {
-                        tagsHtml = item.categories.map(tag => `<span class="doujin-tag">${tag}</span>`).join('');
-                    }
-
-                    card.innerHTML = `
-                        <img class="doujin-thumb" src="${item.thumbnail}" alt="${item.title}">
-                        <div class="doujin-info">
-                            <div class="doujin-name">${item.title}</div>
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-top:5px;">
-                                <span class="doujin-chapters">${item.pages.length} หน้า</span>
-                                <div class="doujin-tags-container">${tagsHtml}</div>
+            // สร้างการ์ดแสดงผล (แบบใหม่สวยขึ้น)
+            visibleList.forEach(video => {
+                grid.innerHTML += `
+                    <a href="${video.link}" style="text-decoration: none;">
+                        <div class="video-card">
+                            <div class="thumbnail-container">
+                                <img src="${video.image}" class="thumbnail" alt="ปกคลิป">
+                                
+                                <!-- วางโค้ดลายน้ำตรงนี้ครับ 👇 -->
+                                <img src="images/logo1.png" class="watermark-logo" alt="logo">
+                                
+                                <div class="play-overlay"><div class="play-icon"></div></div>
                             </div>
+                            <div class="video-title">${video.title}</div>
                         </div>
-                    `;
-                    card.addEventListener('click', () => {
-                        const originalIndex = doujinsList.indexOf(item);
-                        openReader(originalIndex);
-                    });
-                    doujinGrid.appendChild(card);
-                });
+                    </a>
+                `;
+            });
 
-                renderPaginationControls(filteredList.length);
+            // เช็คว่าถ้าแสดงครบหมดแล้ว ให้ซ่อนปุ่ม Load More
+            if (displayCount >= filteredList.length) {
+                loadMoreBox.style.display = 'none';
             } else {
-                doujinGrid.innerHTML = '<p style="color:#888;">ยังไม่มีรายการโดจิน</p>';
+                loadMoreBox.style.display = 'block';
             }
         }
 
-        function renderPaginationControls(totalFilteredItems) {
-            paginationContainer.innerHTML = '';
-            const totalPages = Math.ceil(totalFilteredItems / itemsPerPage);
-
-            if (totalPages <= 1) return;
-
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'page-btn';
-            prevBtn.textContent = '< ก่อนหน้า';
-            prevBtn.disabled = currentPage === 1;
-            prevBtn.addEventListener('click', () => {
-                renderCatalog(currentPage - 1);
-                window.scrollTo({ top: 300, behavior: 'smooth' });
-            });
-            paginationContainer.appendChild(prevBtn);
-
-            for (let i = 1; i <= totalPages; i++) {
-                const btn = document.createElement('button');
-                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-                btn.textContent = i;
-                btn.addEventListener('click', () => {
-                    renderCatalog(i);
-                    window.scrollTo({ top: 300, behavior: 'smooth' });
-                });
-                paginationContainer.appendChild(btn);
-            }
-
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'page-btn';
-            nextBtn.textContent = 'ถัดไป >';
-            nextBtn.disabled = currentPage === totalPages;
-            nextBtn.addEventListener('click', () => {
-                renderCatalog(currentPage + 1);
-                window.scrollTo({ top: 300, behavior: 'smooth' });
-            });
-            paginationContainer.appendChild(nextBtn);
-        }
-
-        function openReader(index) {
-            const item = doujinsList[index];
-            homeView.style.display = 'none';
-            readerView.style.display = 'block';
-            readingTitle.textContent = item.title;
+        // ฟังก์ชันเมื่อคลิกเลือกหมวดหมู่
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
             
-            readerPagesContainer.innerHTML = '';
-            item.pages.forEach(pageUrl => {
-                const img = document.createElement('img');
-                img.src = pageUrl;
-                readerPagesContainer.appendChild(img);
-            });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            triggerAdPopup();
+            currentCategory = cat;
+            displayCount = 12; // แก้เป็น 12 เพื่อให้สลับหมวดแล้วโชว์ 12 คลิป
+            renderVideos();
         }
 
-        function goHome() {
-            readerView.style.display = 'none';
-            homeView.style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // ฟังก์ชันค้นหาแบบ Real-time
+        function searchVideos(keyword) {
+            searchQuery = keyword;
+            displayCount = 12; // รีเซ็ตการแสดงผลกลับมาเริ่มที่ 12 คลิปเมื่อค้นหาใหม่
+            renderVideos();
         }
 
-        function triggerAdPopup() {
-            const adLeft = document.getElementById('ad-left');
-            const adRight = document.getElementById('ad-right');
-            const closeBtns = document.querySelectorAll('.ad-close-btn');
-
-            clearTimeout(adDelayTimeout);
-            clearInterval(closeTimerInterval);
-
-            if (adLeft) adLeft.style.display = 'none';
-            if (adRight) adRight.style.display = 'none';
-            
-            closeBtns.forEach(btn => {
-                btn.innerText = 'ปิดได้ใน (5s)';
-                btn.classList.remove('active');
-                btn.disabled = true;
-            });
-
-            adDelayTimeout = setTimeout(() => {
-                if (adLeft) adLeft.style.display = 'flex';
-                if (adRight) adRight.style.display = 'flex';
-
-                let closeTimeLeft = 5;
-                closeTimerInterval = setInterval(() => {
-                    closeTimeLeft--;
-                    if (closeTimeLeft > 0) {
-                        closeBtns.forEach(btn => btn.innerText = `ปิดได้ใน (${closeTimeLeft}s)`);
-                    } else {
-                        clearInterval(closeTimerInterval);
-                        closeBtns.forEach(btn => {
-                            btn.innerText = '✕ ปิดโฆษณา';
-                            btn.classList.add('active');
-                            btn.disabled = false;
-                        });
-                    }
-                }, 1000);
-            }, 5000);
+        // ฟังก์ชันเมื่อกดปุ่ม Load More
+        function loadMoreVideos() {
+            displayCount += itemsPerClick;
+            renderVideos();
         }
 
-        function closeAd(elementId) {
-            const adElement = document.getElementById(elementId);
-            if (adElement) {
-                adElement.style.display = 'none';
-            }
-        }
-
-        renderCategories();
-        renderCatalog(1);
-        triggerAdPopup();
+        // โหลดข้อมูลครั้งแรกตอนเปิดเว็บ
+        renderVideos();
     </script>
+
 </body>
 </html>
